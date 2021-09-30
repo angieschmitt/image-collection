@@ -7,4 +7,4 @@
 
     $where = array('id'=>$_GET['imgID']);
 
-    $db->update('images',$data,$types,$where,'and');
+    $db->update('images', $data, $types, $where, 'and');
