@@ -1,0 +1,115 @@
+*{ font-family: sans-serif; }
+
+#navigation{ width: 100%; font-size: 20px; padding: 10px 0; }
+#navigation a{ color: #1abc9c; text-decoration: none; text-transform: uppercase; font-weight: bold; margin: 0 10px; }
+#navigation a.upload{ cursor: pointer; }
+
+#uploadBox{ display: none; position: fixed; top: 50%; left: 50%; transform: translateX(-50%) translateY(-50%); z-index: 10; background-color: #FFF; width: 100%; max-width: 400px; padding: 20px; box-sizing: border-box; border: 2px solid #1abc9c; border-radius: 10px; }
+#uploadBox #failed_notice{ display: none; }
+#uploadBox form{ margin: 0; }
+#uploadBox form input[type="file"]{ display: block; margin-bottom: 20px; }
+
+#uploadBox.failed{ display: block; }
+#uploadBox.failed #failed_notice{ display: block; margin-bottom: 10px; }
+
+#content{ display: flex; flex-direction: row; justify-content: flex-start; }
+
+#content #tagList{ min-width: 15%; display: flex; flex-direction: column; justify-content: flex-start; }
+#content #tagList .item{ width: auto; background-color: #1abc9c; margin-bottom: 5px; border-radius: 10px; padding: 0; text-decoration: none; color: #FFF; font-weight: bold; display: flex; flex-direction: row; justify-content: space-between; }
+#content #tagList .item.active,#tags.container .item:hover{ background-color: #000; }
+#content #tagList .item a{ color: #FFF; text-decoration: none; padding: 4px 10px; display: inline-block; flex-grow: 1; }
+#content #tagList .item a.add{ width: 18px; text-align: center; border-radius: 8px; flex-grow: 0; }
+#content #tagList .item a.add:hover{ background-color: #000; }
+#content #tagList .item a.remove{ width: 18px; text-align: center; border-radius: 8px; flex-grow: 0; }
+#content #tagList .item a.remove:hover{ background-color: #1abc9c; }
+#content #tagList .item:hover{ background-color: #1fe0ba; }
+
+#content #imageList{ display: flex; flex-direction: row; justify-content: flex-start; flex-wrap: wrap; padding: 0 5px; }
+#content #imageList .item{ width: 24%; height: auto; box-sizing: border-box; position: relative; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid #1abc9c; border-radius: 10px; margin: 0 .5% .5%; }
+#content #imageList .item a{ text-align: center; }
+#content #imageList .item a img{ width: 100%; height: auto; }
+#content #imageList .item video{ max-width: 100%; }
+#content #imageList .item .actions{ display: flex; width: 100%; height: auto; background-color: #1abc9c; text-align: center; padding: 5px; box-sizing: border-box; color: #FFF; justify-content: space-around; border-radius: 8px 8px 0 0; }
+#content #imageList .item .actions a{ color: #FFF; font-weight: bold; text-decoration: none; cursor: pointer; }
+#content #imageList .item .actions a:hover{ color: #000; }
+#content #imageList .item .data{ display: block; width: 100%; height: auto; background-color: #1abc9c; text-align: center; box-sizing: border-box; color: #FFF; border-radius: 0 0 8px 8px; }
+#content #imageList .item .data a{ display: block; color: #FFF; text-decoration: none; padding: 2px 0; border-radius: 0 0 8px 8px; }
+#content #imageList .item .data a:hover{ background-color: #000; }
+
+.container{ display: flex; flex-direction: row; justify-content: flex-start; flex-wrap: wrap; font-family: sans-serif; }
+.container .item{ height: auto; padding: 10px; box-sizing: border-box; position: relative; display: flex; flex-direction: column; justify-content: space-between; max-width: 75%; }
+.container .item img{ max-width: 100%; }
+.container .item video{ max-width: 100%; }
+.container .item .actions{ display: flex; width: 100%; height: auto; background-color: #1abc9c; text-align: center; padding: 5px; box-sizing: border-box; color: #FFF; justify-content: space-around; }
+.container .item .actions a{ color: #FFF; font-weight: bold; text-decoration: none; cursor: pointer; }
+.container .item .actions a:hover{ color: #000; }
+.container .item .data{ display: block; width: 100%; height: auto; background-color: #1abc9c; text-align: center; padding: 5px; box-sizing: border-box; color: #FFF; }
+.container .item .data a{ display: block; color: #FFF; text-decoration: none; margin: 5px; padding: 2px 0; border-radius: 5px; }
+.container .item .data a:hover{ background-color: #000; }
+.container .item:hover .cover{ display: flex; }
+
+.no_images{ padding: 60px 0; width: 100%; font-size: 25px; text-align: center; box-sizing: border-box; }
+
+#tagList.container .item{ width: auto; background-color: #1abc9c; margin: 0 5px 5px 0; border-radius: 10px; padding: 0; text-decoration: none; color: #FFF; font-weight: bold; flex-direction: row; justify-content: space-between; }
+#tagList.container .item.active,#tags.container .item:hover{ background-color: #000; }
+#tagList.container .item a{ color: #FFF; text-decoration: none; padding: 8px 10px; }
+#tagList.container .item a.add{ width: 18px; text-align: center; border-radius: 8px; }
+#tagList.container .item a.add:hover{ background-color: #000; }
+#tagList.container .item a.remove{ width: 18px; text-align: center; border-radius: 8px; }
+#tagList.container .item a.remove:hover{ background-color: #1abc9c; }
+#images.container .item{ width: 20%; }
+
+.modal{ position: fixed; top: 50%; left: 50%; background-color: #FFF; border: 1px solid #000; transform: translateX(-50%) translateY(-50%); text-align: center; padding: 25px; box-sizing: border-box; box-shadow: 2px 2px 10px 0px #333; }
+.modal h3{ font-family: sans-serif; margin: 5px 0; }
+.modal select,.modal input{ width: 100%; display: block; margin-bottom: 10px; padding: 10px; border: 1px solid #CCC; }
+.modal button{ width: 100%; display: block; margin-bottom: 10px; padding: 5px; }
+.modal #closeModal{ position: absolute; top: -10px; right: -10px; background-color: #FFF; border: 1px solid #000; height: 21px; width: 21px; font-size: 14px; text-align: center; border-radius: 30px; box-sizing: border-box; vertical-align: top; cursor: pointer; }
+.modal #closeModal:hover{ background-color: #000; color: #FFF; }
+
+
+
+#image{ justify-content: space-between; flex-wrap: nowrap; }
+
+#image .data{ height: auto; padding: 10px; box-sizing: border-box; position: relative; display: flex; flex-direction: column; justify-content: flex-start; flex-grow: 1; max-width: 33%; }
+
+#image .data #actions{ display: flex; flex-direction: column; width: 100%; height: auto; text-align: center; box-sizing: border-box; color: #FFF; justify-content: space-around; margin-bottom: 10px; }
+#image .data #actions a{ color: #FFF; background-color: #1abc9c; padding: 5px; font-weight: bold; text-decoration: none; cursor: pointer; display: block; width: 100%; }
+#image .data #actions a:hover{ color: #000;  }
+#image .data #actions .removeNote{ font-size: 12px; color: #d05b5b; text-align: right; padding: 5px 0; position: absolute; right: 0; top: -10px; }
+
+#image .data #remove{ display: flex; width: 100%; height: auto; box-sizing: border-box; color: #FFF; justify-content: flex-end; margin-top: 10px; }
+#image .data #remove a{ color: #FFF; font-weight: bold; text-decoration: none; cursor: pointer; display: inline-block; background-color: #d05b5b; padding: 5px; }
+#image .data #remove a:hover{ color: #000;  }
+
+#image .data #tagList{ display: flex; flex-direction: row; justify-content: flex-start; margin: 0 0 10px 0; flex-wrap: wrap; }
+#image .data #tagList a{ width: auto; background-color: #1abc9c; margin-right: 10px; border-radius: 10px; padding: 8px 30px; text-decoration: none; color: #FFF; font-weight: bold; margin-bottom: 5px; }
+
+#image .data #comments{ margin-top: 20px; }
+#image .data #comments h3{ margin: 5px 0; border-bottom: 1px solid #999; }
+#image .data #comments .comment{ margin-bottom: 0; padding: 5px; }
+#image .data #comments .comment:nth-child(odd){ background-color: #f4f9f8; }
+#image .data #comments .comment .poster{ font-size: 14px; padding-bottom: 3px; margin-bottom: 3px; border-bottom: 1px dashed #CCC; }
+#image .data #comments .comment .poster .datetime{ font-size: 12px; float: right; }
+#image .data #comments .comment .content{ font-size: 16px; margin: 5px 0; }
+
+#image .data #comments #commentForm{ margin: 10px 0; }
+#image .data #comments #commentForm input[type="text"]{ display: block; width: 100%; }
+#image .data #comments #commentForm textarea{ display: block; width: 100%; height: 100px; margin: 10px 0; }
+#image .data #comments #commentForm input[type="submit"]{ display: block; float: right; padding: 0 20px; }
+
+
+@media(max-width: 768px){
+    #tags.container{ justify-content: space-around; }
+    #images.container .item{ width: 33%; }
+
+    #image{ flex-wrap: wrap; }
+    #image .data{ width: 100%; max-width: inherit; }
+}
+
+@media(max-width: 480px){
+    #tagList.container .item{ padding: 0; margin: 0 2px 2px 0; flex-grow: 1; }
+    #tagList.container .item a{ padding: 10px; font-size: 18px; }
+    #images.container .item{ width: 100%; max-width: inherit; }
+
+    #image{ flex-wrap: wrap; }
+}
