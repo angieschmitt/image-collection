@@ -91,7 +91,7 @@ if ( !class_exists( 'DB' ) ) {
 
             //Format where clause
             $where_clause = '';
-            $where_values = '';
+            $where_values = array();
             $count = 0;
 
             foreach ( $where as $field => $value ) {
@@ -104,14 +104,15 @@ if ( !class_exists( 'DB' ) ) {
 
                 $count++;
             }
-            // Prepend $format onto $values
-            array_unshift($values, $format);
+
             $values = array_merge($values, $where_values);
+
             // Prepary our query for binding
             $stmt = $db->prepare("UPDATE {$table} SET {$placeholders} WHERE {$where_clause}");
 
             // Dynamically bind values
-            call_user_func_array( array( $stmt, 'bind_param'), $this->ref_values($values));
+            // call_user_func_array( array( $stmt, 'bind_param'), $values);
+            mysqli_stmt_bind_param($stmt, $format, ...$values);
 
             // Execute the query
             echo $stmt->execute();
@@ -149,15 +150,6 @@ if ( !class_exists( 'DB' ) ) {
 
             //Fetch results
             $result = $stmt->get_result();
-
-            // Bind results
-            //$stmt->bind_result($token);
-
-            // Fetch value
-            // while ( $stmt->fetch() ) {
-            //     echo $token . "<br>";
-            //     //$result[] = $token;
-            // }
 
             //Create results object
             while ($row = $result->fetch_object()) {

@@ -2,9 +2,9 @@
 
     require('./database-class.php');
 
-    $data = array('deleted'=>1);
-    $types = array('%s','%s');
+    $data = array('deleted' => 1);
+    $where = array('id' => $_GET['imgID']);
+    
+    $format = array('%s', '%s');
 
-    $where = array('id'=>$_GET['imgID']);
-
-    $db->update('images', $data, $types, $where, 'and');
+    $db->update('images', $data, $format, $where, array() );
